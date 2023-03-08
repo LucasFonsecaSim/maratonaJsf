@@ -6,6 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
 <h:body>
     <p:importEnum type="br.com.devdojo.maratonajsf.model.enums.Turno" var="Turno" allSuffix="ALL_ENUM_VALUES"/>
     <h:outputLabel value="Hello, wo2rl2d"/><br/>
@@ -26,5 +29,60 @@
         null, instanceof, empty, not empty, div, mod. -->
     <h:outputText value="ENUM"/><br/>
     <h:outputLabel value="#{estudanteRegistrarBean.estudante.turno eq Turno.MATUTINO}"/><br/>
+
+    <!-- Arrays -->
+    <h:outputLabel value="#{estudanteRegistrarBean.nomeArray[0]} #{estudanteRegistrarBean.nomeArray[1]} #{estudanteRegistrarBean.nomeArray[2]}"/><br/>
+    <!-- ui: repeat array-->
+    <ui:repeat value="#{estudanteRegistrarBean.nomeArray}" var="nome">
+        <h:outputLabel value="#{nome}"/><br/>
+    </ui:repeat>
+
+    <!-- List -->
+    <h:outputLabel value="#{estudanteRegistrarBean.nomeLista.get(0)} #{estudanteRegistrarBean.nomeLista.get(1)} #{estudanteRegistrarBean.nomeLista.get(2)}"/><br/>
+    <!-- ui: repeat List-->
+    <ui:repeat value="#{estudanteRegistrarBean.nomeLista}" var="nome">
+        <h:outputLabel value="#{nome}"/><br/>
+    </ui:repeat>
+
+
+    <!-- ui: repeat Set-->
+    <ui:repeat value="#{estudanteRegistrarBean.nomeSet.toArray()}" var="nome">
+        <h:outputLabel value="#{nome}"/><br/>
+    </ui:repeat>
+
+    <!-- Map -->
+    <h:outputLabel value="#{estudanteRegistrarBean.nomeMap.get('Lucas1')}"/><br/>
+    <h:outputLabel value="#{estudanteRegistrarBean.nomeMap}"/><br/>
+    <!-- ui: repeat Map-->
+    <ui:repeat value="#{estudanteRegistrarBean.nomeMap.entrySet().toArray()}" var="entry">
+        <h:outputLabel value="#{entry.key} - #{entry.value}"/><br/>
+    </ui:repeat>
+
+    <!-- executando metodos -->
+    #{estudanteRegistrarBean.executar()}
+    #{estudanteRegistrarBean.executar(' Teste metodo 1')}
+
+    <!-- Button e action/actionListener-->
+    <h:form>
+        <h:commandButton value="Ir para a proxima página." action="#{estudanteRegistrarBean.irParaIndex2()}"/><br/>
+        <!-- Passando valores com EL para funcoes JS -->
+        <h:commandButton value="Soltar magia" onclick="fazMagica('Magica!')"/><br/>
+        <h:commandButton value="Mostrar nome" onclick="alertNome('#{estudanteRegistrarBean.estudante.nome}')"/><br/>
+    </h:form>
+
+    <!-- Imprimindo CSS com EL -->
+    <ui:repeat value="#{estudanteRegistrarBean.nomeLista}" var="nome" varStatus="status">
+        <h:outputLabel value="#{nome}" style="color: #{status.index mod 2 == 0 ? 'red' : 'green'}"/><br/>
+    </ui:repeat>
+
 </h:body>
+<!-- JavaScript-->
+<script type="text/javascript">
+    function fazMagica(magica){
+        alert(magica);
+    }
+        function alertNome(nome){
+            alert(nome);
+    }
+</script>
 </html>
