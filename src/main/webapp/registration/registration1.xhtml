@@ -7,14 +7,15 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <h:body>
+        <h:messages/>
         <h:form>
             <h2>Primeira página de registro FlowScoped</h2>
             <h:panelGrid columns="2">
                 <h:outputLabel value="nome"/>
-                <h:inputText value="#{testeFlowBean.nome}"/>
+                <h:inputText value="#{testeFlowBean.nome}" required="true" requiredMessage="Nome obrigatório"/>
                 <h:outputLabel value="sobreNome"/>
                 <h:inputText value="#{testeFlowBean.sobreNome}"/>
-                <h:commandButton value="next" action="registration2?faces-redirect=true"/>
+                <h:commandButton value="next" action="registrationPage2"/>
             </h:panelGrid>
         </h:form>
     </h:body>
