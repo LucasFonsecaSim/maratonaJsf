@@ -10,10 +10,12 @@
 </h:head>
 <h:body>
     <h:form>
+        <h:outputText value="#{testeApplicationBean.categoriaList}"/><br/>
         <h:outputText value="#{testeRequestBean.personagemSelecionado}"/><br/>
         <h:commandButton actionListener="#{testeRequestBean.selecionarPesonagem()}" value="Selecionar personagem"/>
         <h:commandButton actionListener="#{testeRequestBean.selecionarPesonagem()}" value="Selecionar personagem Forward" action="index2"/>
         <h:commandButton actionListener="#{testeRequestBean.selecionarPesonagem()}" value="Selecionar personagem Redirect" action="index2?faces-redirect=true"/>
+        <h:commandButton actionListener="#{testeApplicationBean.mudarLista()}" value="Mudar lista Application Bean"/>
     </h:form>
 </h:body>
 </html>
