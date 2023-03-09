@@ -3,18 +3,24 @@ package br.com.devdojo.maratonajsf.bean.estudante;
 import br.com.devdojo.maratonajsf.model.Estudante;
 
 import javax.annotation.ManagedBean;
+import javax.el.LambdaExpression;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.*;
 
 @Named
 @ManagedBean
+@ViewScoped
 public class EstudanteRegistrarBean implements Serializable {
     private Estudante estudante = new Estudante();
     private String[] nomeArray = {"DevDojo", "Teste1", "Teste2"};
     private List<String> nomeLista = Arrays.asList("Lucas", "Teste1", "Teste2");
     private Set<String> nomeSet = new HashSet<>(Arrays.asList("Lucas", "TesteSet", "TesteSet2"));
     private Map<String, String> nomeMap = new HashMap<>();
+    private boolean mostrarNotas;
+    private boolean mostrarLink;
 
     {
         nomeMap.put("Lucas1","TesteMap 1");
@@ -41,6 +47,42 @@ public class EstudanteRegistrarBean implements Serializable {
     public String irParaIndex2(){
         return "index2?faces-redirect=true";
     }
+    public void exibirNotas(){
+        this.mostrarNotas = true;
+    }
+    public void esconderNotas(){
+        this.mostrarNotas = false;
+    }
+    public void exibirLink(){
+        this.mostrarLink = true;
+    }
+    public void esconderLink(){
+        this.mostrarLink = false;
+    }
+
+    public void calcularCubo(LambdaExpression le, long value){
+        long result =(long) le.invoke(FacesContext.getCurrentInstance().getELContext(),value);
+        System.out.println(result);
+    }
+
+    //---------------Metodos Get e Set.-----------------
+
+    public boolean isMostrarLink() {
+        return mostrarLink;
+    }
+
+    public void setMostrarLink(boolean mostrarLink) {
+        this.mostrarLink = mostrarLink;
+    }
+
+    public boolean isMostrarNotas() {
+        return mostrarNotas;
+    }
+
+    public void setMostrarNotas(boolean mostrarNotas) {
+        this.mostrarNotas = mostrarNotas;
+    }
+
     public Map<String, String> getNomeMap() {
         return nomeMap;
     }
