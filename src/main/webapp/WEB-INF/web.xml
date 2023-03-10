@@ -8,9 +8,13 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+    <!-- Página inicial -->
     <welcome-file-list>
-        <welcome-file>login.xhtml</welcome-file>
+        <welcome-file>comunicacao.xhtml</welcome-file>
     </welcome-file-list>
+
+    <!-- Configurações -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -24,6 +28,13 @@
             30
         </session-timeout>
     </session-config>
+
+    <!-- Comunicação -->
+    <context-param>
+        <param-name>images.location</param-name>
+        <param-value>C:\var</param-value>
+    </context-param>
+
     <!-- Filtro de acesso -->
     <filter>
         <filter-name>LoginFilter</filter-name>
@@ -33,6 +44,7 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/restricted/*</url-pattern>
     </filter-mapping>
+
     <!-- Error Page -->
     <error-page>
         <location>/error.xhtml</location>
