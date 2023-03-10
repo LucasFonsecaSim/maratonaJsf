@@ -2,7 +2,6 @@ package br.com.devdojo.maratonajsf.bean.view;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -21,7 +20,7 @@ public class TesteViewBean implements Serializable {
     @PostConstruct
     public void init(){
         System.out.println(" Entrou no PostConstruct do ViewScoped ");
-        personagens = Array.asList("Naruto","Hinata","Yondaime");
+        personagens = Arrays.asList("Naruto","Hinata","Yondaime");
     }
 
     public void selecionarPesonagem(){
