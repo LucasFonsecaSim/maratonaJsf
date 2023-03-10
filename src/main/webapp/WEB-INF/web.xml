@@ -9,7 +9,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <welcome-file-list>
-        <welcome-file>inicioFlow.xhtml</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -24,6 +24,16 @@
             30
         </session-timeout>
     </session-config>
+    <!-- Filtro de acesso -->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>br.com.devdojo.maratonajsf.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/restricted/*</url-pattern>
+    </filter-mapping>
+    <!-- Error Page -->
     <error-page>
         <location>/error.xhtml</location>
     </error-page>
