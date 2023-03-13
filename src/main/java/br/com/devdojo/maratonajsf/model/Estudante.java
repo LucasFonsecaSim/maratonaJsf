@@ -4,6 +4,8 @@ import br.com.devdojo.maratonajsf.model.enums.Turno;
 
 import javax.annotation.ManagedBean;
 import javax.inject.Named;
+import java.util.Arrays;
+import java.util.List;
 
 @Named
 @ManagedBean
@@ -14,7 +16,26 @@ public class Estudante{
     private double nota2 = 22;
     private double nota3=10;
     private Turno turno = Turno.MATUTINO;
+    private static Arrays Array;
 
+    /* Construtores */
+    public Estudante() {
+    }
+
+    public Estudante(String nome, String sobreNome, double nota1) {
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.nota1 = nota1;
+    }
+
+    /* Metodos gerais */
+
+    public static List<Estudante> estudanteList(){
+        return Array.asList(new Estudante("Ikki","Fenix",10),
+                            new Estudante("Shiryu","Dragao",20),
+                            new Estudante("Seya","Pegasus",30));
+    }
+    /* Metodos Get e set*/
     public Turno getTurno() {
         return turno;
     }
