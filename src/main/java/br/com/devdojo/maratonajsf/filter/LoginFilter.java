@@ -13,7 +13,6 @@ public class LoginFilter implements Filter {
     private LoginBean loginBean;
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -28,9 +27,7 @@ public class LoginFilter implements Filter {
             filterChain.doFilter(servletRequest,servletResponse);
         }
     }
-
     @Override
     public void destroy() {
-
     }
 }
